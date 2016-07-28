@@ -23,5 +23,31 @@ namespace BrickManager.Web.Features.Inventory
 
             return View(inventory);
         }
+
+        public ActionResult Add()
+        {
+            return View("Add/Add");
+        }
+
+        [HttpPost]
+        public ActionResult Add(Add.Command command)
+        {
+            _mediator.Send(command);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(Edit.Query query)
+        {
+            var model = _mediator.Send(query);
+
+            return View("Edit/Edit", model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Edit.Command command)
+        {
+            _mediator.Send(command);
+            return RedirectToAction("Index");
+        }
     }
 }

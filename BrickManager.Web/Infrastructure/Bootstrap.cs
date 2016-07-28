@@ -2,6 +2,7 @@
 using Autofac.Features.Variance;
 using AutoMapper;
 using BrickManager.Web.DAL;
+using BrickManager.Web.Features;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,13 @@ namespace BrickManager.Web.Infrastructure
                 var c = ctx.Resolve<IComponentContext>();
                 return t => (IEnumerable<object>)c.Resolve(typeof(IEnumerable<>).MakeGenericType(t));
             });
+
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .Where(t => t.Name.EndsWith("Validator"))
+            .AsImplementedInterfaces();
+            builder.RegisterGenericDecorator(typeof(ValidationDecorator<,>), typeof(IRequestHandler<,>), "requestHandler");
+
 
             //db context
             builder.Register<BrickstoreContext>(c => new BrickstoreContext());

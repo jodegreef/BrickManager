@@ -68,6 +68,10 @@
       <HintPath>..\packages\DelegateDecompiler.EntityFramework.0.17.0\lib\net45\DelegateDecompiler.EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.6.2.1.0\lib\Net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MediatR, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MediatR.2.0.2\lib\net45\MediatR.dll</HintPath>
       <Private>True</Private>
@@ -198,8 +202,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DAL\BrickstoreContext.cs" />
+    <Compile Include="Features\Inventory\Add\Command.cs" />
+    <Compile Include="Features\Inventory\Add\Handler.cs" />
+    <Compile Include="Features\Inventory\Add\MappingProfile.cs" />
+    <Compile Include="Features\Inventory\Edit\Command.cs" />
+    <Compile Include="Features\Inventory\Edit\QueryHandler.cs" />
+    <Compile Include="Features\Inventory\Edit\CommandHandler.cs" />
+    <Compile Include="Features\Inventory\Edit\MappingProfile.cs" />
+    <Compile Include="Features\Inventory\Edit\Query.cs" />
+    <Compile Include="Features\Inventory\Edit\Validator.cs" />
     <Compile Include="Features\Inventory\InventoryController.cs" />
     <Compile Include="Features\Inventory\Index.cs" />
+    <Compile Include="Features\ValidationDecorator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -218,6 +232,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Features\Inventory\Add\Add.cshtml" />
+    <Content Include="Features\Inventory\Edit\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
